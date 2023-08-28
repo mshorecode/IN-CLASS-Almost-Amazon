@@ -11,7 +11,13 @@ const getBooks = () => new Promise((resolve, reject) => {
     },
   })
     .then((response) => response.json())
-    .then((data) => resolve(Object.values(data)))
+    .then((data) => {
+      if (data) {
+        resolve(Object.values(data));
+      } else {
+        resolve([]);
+      }
+    })
     .catch(reject);
 });
 
@@ -77,7 +83,15 @@ const booksOnSale = () => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
-// TODO: STRETCH...SEARCH BOOKS
+const searchBooks = (searchValue) => new Promise((resolve, reject) => {
+  getBooks().then((booksArray) => {
+    const searchResults = booksArray.filter((book) => (
+      book.title.toLowerCase().includes(searchValue)
+      || book.description.toLowerCase().includes(searchValue)
+    ));
+    resolve(searchResults);
+  }).catch(reject);
+});
 
 export {
   getBooks,
@@ -85,5 +99,6 @@ export {
   booksOnSale,
   deleteBook,
   getSingleBook,
-  updateBook
+  updateBook,
+  searchBooks,
 };
