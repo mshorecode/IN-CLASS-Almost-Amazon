@@ -3,8 +3,8 @@ import client from '../utils/client';
 
 const endpoint = client.databaseURL;
 
-const getBooks = () => new Promise((resolve, reject) => {
-  fetch(`${endpoint}/books.json`, {
+const getBooks = (uid) => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/books.json?orderBy="uid"&equalTo="${uid}"`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
@@ -83,8 +83,8 @@ const booksOnSale = () => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
-const searchBooks = (searchValue) => new Promise((resolve, reject) => {
-  getBooks().then((booksArray) => {
+const searchBooks = (searchValue, uid) => new Promise((resolve, reject) => {
+  getBooks(uid).then((booksArray) => {
     const searchResults = booksArray.filter((book) => (
       book.title.toLowerCase().includes(searchValue)
       || book.description.toLowerCase().includes(searchValue)

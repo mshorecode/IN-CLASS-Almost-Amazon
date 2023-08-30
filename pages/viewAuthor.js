@@ -22,7 +22,7 @@ const viewAuthor = (obj) => {
   domString += '<div class="mt-2 d-flex flex-wrap gap-5">';
   obj.books.forEach((item) => {
     domString += `
-      <div class="card">
+      <div class="card" style="width: 296px;">
         <img class="card-img-top" src=${item.image} alt=${item.title} style="height: 400px;">
         <div class="card-body" style="height: 180px;">
           <h5 class="card-title">${item.title}</h5>

@@ -2,7 +2,7 @@
 @import "~@fortawesome/fontawesome-free/css/all.min.css";
 
 body {
-  background-color: black;
+  background-color: white;
 }
 
 .navbar-dark .navbar-brand {
@@ -62,12 +62,15 @@ body {
     display: flex;
     flex-flow: row wrap;
     text-align: center;
-    margin: auto;
+    margin: 20px auto;
     justify-content: center;
+    gap: 10px;
 
     .card {
       width: 300px;
       margin: 5px;
+      border: 2px solid black;
+      box-shadow: -10px 10px 5px rgba(0, 0, 0, 0.336);
 
       .sale-badge {
         font-size: 1em;
